@@ -49,6 +49,10 @@ class DFRobot_VEML6075:
   DYNAMIC_HIGH = 0x08
 
   def __init__(self, i2cBus, addr):
+    """
+    @param i2cBus Select _bus
+    @param addr Module address
+    """
     self._bus = RaspberryIIC(i2cBus)
     self._addr = addr
     self._isActiveForceMode = False
@@ -78,7 +82,9 @@ class DFRobot_VEML6075:
 
   def setPower(self, power):
     """
-
+    @brief Set power
+    
+    @param power Power status to set
     """
     self._writeRegBits(self.CONF, 0xfe, power)
 

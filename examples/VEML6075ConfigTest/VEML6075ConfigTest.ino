@@ -42,6 +42,7 @@ uint8_t processOneCmd()  // process one cmd from serial
   uint8_t   cmd = 0;
   if(Serial.available()) {
     cmd = Serial.read();
+    delay(2);
     while(Serial.available()) {
       Serial.read();
       delay(2);
