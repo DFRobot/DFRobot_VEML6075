@@ -1,21 +1,20 @@
 # VEML6075
 
-<pre>
-The VEML6075 senses UVA and UVB light and incorporates
+  The VEML6075 senses UVA and UVB light and incorporates
 photodiode, amplifiers, and analog / digital circuits into a
 single chip using a CMOS process. When the UV sensor is
 applied, it is able to detect UVA and UVB intensity to provide
 a measure of the signal strength as well as allow for UVI
-measurement.
-The VEML6075 provides excellent temperature compensation
+measurement. </br>
+
+  The VEML6075 provides excellent temperature compensation
 capability for keeping the output stable under changing
 temperature. VEML6075’s functionality is easily operated via
-the simple command format of I 2 C (SMBus compatible)
+the simple command format of I2C (SMBus compatible)
 interface protocol. VEML6075’s operating voltage ranges
 from 1.7 V to 3.6 V. VEML6075 is packaged in a lead (Pb)-free
 4 pin OPLGA package which offers the best market-proven
-reliability.
-</pre>
+reliability. <br>
 
 ## DFRobot_VEML6075 Library for Arduino
 
@@ -61,9 +60,10 @@ Download this library and unzip it to a privileged path.
 /**
  * @brief Class define of VEML6075 that connect through IIC.
  *
+ * @param pWire class TwoWire pointer
  * @param addr Module's IIC addr.
  */
-class DFRobot_VEML6075_IIC(uint8_t addr);
+class DFRobot_VEML6075_IIC(TwoWire* pWire, uint8_t addr);
 
 /**
  * @brief Begin.
@@ -115,7 +115,7 @@ void setActiveForceMode(eVEML6075ActiveForceMode_t eMode);
 eVEML6075ActiveForceMode_t getActiveForceMode();
 
 /**
- * @brief Trigger one measurement if active force mode enables.
+ * @brief Trigger one measurement if active force mode is enable.
  */
 void trigOneMeasurement();
 
@@ -270,6 +270,8 @@ class DFRobot_VEML6075:
 
   def getUvi(self, Uva, Uvb):
 
+  def Uvi2mwpcm2(self, Uvi):
+
 ```
 
 ## Compatibility
@@ -280,6 +282,10 @@ FireBeetle-ESP32  |      √       |             |            |
 FireBeetle-ESP8266  |      √       |             |            | 
 FireBeetle-328P |      √       |             |            | 
 
+MCU                | Work Well | Not Work Well | Untested  | Remarks
+------------------ | :----------: | :----------: | :---------: | -----
+3b  |      √       |             |            | 
+
 ## Credits
 
-* author [guojiehan jiehan.guo@dfrobot.com]
+* author [xiaowo jiehan.guo@dfrobot.com]

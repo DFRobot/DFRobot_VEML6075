@@ -1,7 +1,7 @@
 /*!
- *  file VEML6075.ino
- *  normal test for VEML6075
- *  UVA index, UVB index and UV index will print on serial monitor
+ *  file VEML6075SimpleTest.ino
+ *  simple test for VEML6075
+ *  Print UVA index, UVB index and UV index on the serial monitor
  *
  *  Copyright    [DFRobot](http://www.dfrobot.com), 2018
  *  Copyright    GNU Lesser General Public License

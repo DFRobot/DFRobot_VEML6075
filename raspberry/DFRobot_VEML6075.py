@@ -52,13 +52,12 @@ class DFRobot_VEML6075:
     self._bus = RaspberryIIC(i2cBus)
     self._addr = addr
     self._isActiveForceMode = False
-    self._UV_IT = self.UV_IT_100
+    self._UV_IT = self.UV_IT_100 >> 4
 
   def begin(self):
     _id = self._readReg(self.ID, 2)
     if _id[0] == self.ID_DEFAULT:
-      self._writeReg(self.ID, [self.ID_DEFAULT & 0xff, self.ID_DEFAULT >> 8])
-      self.setDynamic(self.DYNAMIC_NORMAL)
+      self._writeReg(self.CONF, [self.CONF_DEFAULT & 0xff, self.CONF_DEFAULT >> 8])
       self.setActiveForceMode(self.ACTIVE_FORCE_DISABLE)
       self.setPower(self.POWER_ON)
       self.setIntegrationTime(self.UV_IT_100)
@@ -89,6 +88,8 @@ class DFRobot_VEML6075:
 
   def setActiveForceMode(self, isEnable):
     self._writeRegBits(self.CONF, 0xfd, isEnable)
+    if isEnable == self.ACTIVE_FORCE_ENABLE:
+      self._isActiveForceMode = True
 
   def getActiveForceMode(self):
     buf = self._readReg(self.CONF, 2)
@@ -107,6 +108,7 @@ class DFRobot_VEML6075:
 
   def setIntegrationTime(self, t):
     self._writeRegBits(self.CONF, 0x8f, t)
+    self._UV_IT = t >> 4
 
   def getIntegrationTime(self):
     buf = self._readReg(self.CONF, 2)

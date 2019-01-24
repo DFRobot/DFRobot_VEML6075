@@ -1,9 +1,9 @@
 /*!
  *  file VEML6075ConfigTest.ino
  *  MCU receive cmd from serial monitor to test VEML6075 config
- *  input '1' to test set power
+ *  input '1' to set power
  *  input '2' to test dynamic
- *  input '3' to test set active force mode
+ *  input '3' to set active force mode
  *  input '4' to test integration time
  *  input '5' to trigger one measurement in active force mode
  *  input '6' to start auto measurement
@@ -74,29 +74,29 @@ void loop()
 
   switch(processOneCmd()) {
 
-  // test set power
+  // set power
   case '1': {
     if(VEML6075.getPower() == eVEML6075PowerOn) {
-      Serial.println("test set power, change to off");
+      Serial.println("test power, change to off");
       VEML6075.setPower(eVEML6075PowerOff);
     } else {
-      Serial.println("test set power, change to on");
+      Serial.println("test power, change to on");
       VEML6075.setPower(eVEML6075PowerOn);
     }
   } break;
 
-  // test set dynamic
+  // set dynamic
   case '2': {
     if(VEML6075.getDynamic() == eVEML6075DynamicNormal) {
-      Serial.println("test set dynamic, change to high");
+      Serial.println("test dynamic, change to high");
       VEML6075.setDynamic(eVEML6075DynamicHigh);
     } else {
-      Serial.println("test set dynamic, change to normal");
+      Serial.println("test dynamic, change to normal");
       VEML6075.setDynamic(eVEML6075DynamicNormal);
     }
   } break;
 
-  // test set active force mode
+  // set active force mode
   case '3': {
     if(VEML6075.getActiveForceMode() == eVEML6075ActiveForceModeDisable) {
       Serial.println("test set active force mode, change to enable, input '5' to start one measurement");
@@ -107,7 +107,7 @@ void loop()
     }
   } break;
 
-  // test set integration time
+  // set integration time
   case '4': {
     Serial.println("input '1'/'2'/'3'/'4'/'5' set integration time to 50ms/100ms/200ms/400ms/800ms");
     cmd = 0;

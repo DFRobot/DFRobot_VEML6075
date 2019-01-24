@@ -30,9 +30,11 @@ if __name__ == '__main__':
     Uva = VEML6075.getUva()  # get UVA
     Uvb = VEML6075.getUvb()  # get UVB
     Uvi = VEML6075.getUvi(Uva, Uvb)  # get UVI
+    print("")
     print("======== start print ========")
     print("UVA:     %.2f" %(Uva))
     print("UVB:     %.2f" %(Uvb))
     print("UVA:     %.2f" %(Uvi))
     print("mw/cm^2: %.2f" %(VEML6075.Uvi2mwpcm2(Uvi)))
     print("======== end print =========")
+    time.sleep(1)
