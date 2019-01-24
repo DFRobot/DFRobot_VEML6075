@@ -77,6 +77,9 @@ class DFRobot_VEML6075:
     self._writeReg(reg, buf)
 
   def setPower(self, power):
+    """
+
+    """
     self._writeRegBits(self.CONF, 0xfe, power)
 
   def Uvi2mwpcm2(self, Uvi):

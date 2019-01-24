@@ -282,7 +282,7 @@ FireBeetle-ESP32  |      √       |             |            |
 FireBeetle-ESP8266  |      √       |             |            | 
 FireBeetle-328P |      √       |             |            | 
 
-MCU                | Work Well | Not Work Well | Untested  | Remarks
+RASPBERRY                | Work Well | Not Work Well | Untested  | Remarks
 ------------------ | :----------: | :----------: | :---------: | -----
 3b  |      √       |             |            | 
 
