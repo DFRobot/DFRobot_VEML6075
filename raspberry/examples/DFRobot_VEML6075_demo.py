@@ -27,9 +27,9 @@ if __name__ == '__main__':
   print("VEML6075 begin succeed")
 
   while True:
-    Uva = VEML6075.getUva()  # get UVA
-    Uvb = VEML6075.getUvb()  # get UVB
-    Uvi = VEML6075.getUvi(Uva, Uvb)  # get UVI
+    Uva = VEML6075.getUva()           # get UVA
+    Uvb = VEML6075.getUvb()           # get UVB
+    Uvi = VEML6075.getUvi(Uva, Uvb)   # get UVI
     print("")
     print("======== start print ========")
     print("UVA:     %.2f" %(Uva))
