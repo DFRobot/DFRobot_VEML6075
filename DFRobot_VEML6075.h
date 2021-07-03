@@ -15,7 +15,12 @@
 #define UVI_VERY_HIGH   10.0f
 #define UVI_EXTREME     12.0f
 
-#define Uvi2mwpcm2(UVI) (UVI * 2500.0f)
+/* Conversion from UV index to mW/cm^2
+   using CIE-weighted UV
+   1 UV index = 25 mW/m^2 = 0.0025 mW/cm^2
+   Author:  @thedonator (Github)
+*/
+#define Uvi2mwpcm2(UVI) (UVI * 0.0025f)
 
 // registers ---------------------------------------------------------------
 
