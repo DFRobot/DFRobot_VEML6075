@@ -1,3 +1,13 @@
+/*!
+ * @file DFRobot_VEML6075.cpp
+ * @brief define DFRobot_VEML6075 class infrastructure, the implementation of basic methods
+ * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @maintainer [yangfeng](feng.yang@dfrobot.com)
+ * @version  V1.0
+ * @date  2021-10-18
+ * @url https://github.com/DFRobot/DFRobot_VEML6075
+ */
 #include <DFRobot_VEML6075.h>
 
 #define UVA_A_COEF    2.22f
@@ -166,7 +176,6 @@ float DFRobot_VEML6075::getUvi(float Uva, float Uvb)
 
 void DFRobot_VEML6075_IIC::writeReg(uint8_t reg, uint8_t *pBuf, uint16_t len)
 {
-  _pWire->begin();
   _pWire->beginTransmission(_addr);
   _pWire->write(reg);
   for(uint16_t i = 0; i < len; i ++)
@@ -176,7 +185,6 @@ void DFRobot_VEML6075_IIC::writeReg(uint8_t reg, uint8_t *pBuf, uint16_t len)
 
 void DFRobot_VEML6075_IIC::readReg(uint8_t reg, uint8_t *pBuf, uint16_t len)
 {
-  _pWire->begin();
   _pWire->beginTransmission(_addr);
   _pWire->write(reg);
   if(_pWire->endTransmission(false) != 0)

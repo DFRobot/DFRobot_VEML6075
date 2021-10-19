@@ -1,20 +1,20 @@
 /*!
- *  file VEML6075ConfigTest.ino
- *  MCU receive cmd from serial monitor to test VEML6075 config
- *  input '1' to set power
- *  input '2' to test dynamic
- *  input '3' to set active force mode
- *  input '4' to test integration time
- *  input '5' to trigger one measurement in active force mode
- *  input '6' to start auto measurement
- *  input '7' to set config to default
- *
- *  Copyright    [DFRobot](http://www.dfrobot.com), 2018
- *  Copyright    GNU Lesser General Public License
- *  version  V1.0
- *  date  2018-12-18
+ * @file VEML6075ConfigTest.ino
+ * @brief MCU receive cmd from serial monitor to test VEML6075 config
+ * @n     input '1' to set power
+ * @n     input '2' to test dynamic
+ * @n     input '3' to set active force mode
+ * @n     input '4' to test integration time
+ * @n     input '5' to trigger one measurement in active force mode
+ * @n     input '6' to start auto measurement
+ * @n     input '7' to set config to default
+ * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @maintainer [Fary](feng.yang@dfrobot.com)
+ * @version  V1.0
+ * @date  2021-10-18
+ * @url https://github.com/DFRobot/DFRobot_VEML6075
  */
-
 #include <Wire.h>
 #include <DFRobot_VEML6075.h>
 

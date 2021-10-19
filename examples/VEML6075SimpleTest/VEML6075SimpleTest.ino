@@ -1,14 +1,14 @@
 /*!
- *  file VEML6075SimpleTest.ino
- *  simple test for VEML6075
- *  Print UVA index, UVB index and UV index on the serial monitor
- *
- *  Copyright    [DFRobot](http://www.dfrobot.com), 2018
- *  Copyright    GNU Lesser General Public License
- *  version  V1.0
- *  date  2018-12-18
+ * @file VEML6075ConfigTest.ino
+ * @brief  simple test for VEML6075
+ * @n       Print UVA index, UVB index and UV index on the serial monitor
+ * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @license     The MIT License (MIT)
+ * @maintainer [Fary](feng.yang@dfrobot.com)
+ * @version  V1.0
+ * @date  2021-10-18
+ * @url https://github.com/DFRobot/DFRobot_VEML6075
  */
-
 #include <Wire.h>
 #include <DFRobot_VEML6075.h>
 

@@ -1,4 +1,6 @@
-# VEML6075
+# DFRobot_VEML6075
+
+- [中文版](./README_CN.md)
 
   The VEML6075 senses UVA and UVB light and incorporates
 photodiode, amplifiers, and analog / digital circuits into a
@@ -16,276 +18,199 @@ from 1.7 V to 3.6 V. VEML6075 is packaged in a lead (Pb)-free
 4 pin OPLGA package which offers the best market-proven
 reliability. <br>
 
-## DFRobot_VEML6075 Library for Arduino
+![](./resources/images/SEN0303.png)
 
-  - [Summary](#summary)
-  - [Feature](#feature)
-  - [Installation](#installation)
-  - [Methods](#methods)
-  - [Compatibility](#compatibility)
-  - [Credits](#credits)
+## Product Link(https://www.dfrobot.com/product-1906.html)
+
+    SKU：SEN0303
+
+## Table of Contents
+* [Summary](#summary)
+* [Installation](#installation)
+* [Methods](#methods)
+* [Compatibility](#compatibility)
+* [History](#history)
+* [Credits](#credits)
 
 ## Summary
 
-<pre>
-Get UVA, UVB and UVI with data from VEML6075.
-These data are printed out through the serial port.
-Use API to config module.
-</pre>
-
-## Feature
-
-<pre>
-* Connect modules through IIC.
-* Test config through Serial.
-* Get all raw data from module, convert raw data into UV index.
-</pre>
+1. Get UVA, UVB and UVI with data from VEML6075.<br>
+2. These data are printed out through the serial port.<br>
+3. Use API to config module.<br>
 
 ## Installation
 
-For Arduino
-<pre>
-Download this library and unzip it to Arduino librarys folder.
-</pre>
+There are two ways to use the library:
+1. Open the Arduino IDE, search for "DFRobot_VEML6075" in Tools --> Manager Libraries on the status bar, and install the library.
+2. First download the library file, paste it into the \Arduino\libraries directory, then open the examples folder and run the demo in that folder.
 
-For Raspberry
-<pre>
-Download this library and unzip it to a privileged path.
-</pre>
 
 ## Methods
 
-```cpp
+```C++
 
-/**
- * @brief Class define of VEML6075 that connect through IIC.
- *
- * @param pWire class TwoWire pointer
- * @param addr Module's IIC addr.
- */
-class DFRobot_VEML6075_IIC(TwoWire* pWire, uint8_t addr);
+  /**
+   * @fn begin
+   * @brief initialization function
+   * @return bool,returns the initialization status
+   * @retval true Initialization succeeded
+   * @retval fasle Initialization  failed
+   */
+  boolean begin();
 
-/**
- * @brief Begin.
- *
- * @return Result of begin.
- *  @retval true Begin successed.
- *  @retval false Begin faild.
- */
-boolean begin();
+  /**
+   * @fn setPower
+   * @brief set power
+   * @param ePower
+   * @n       eVEML6075PowerOn    power on
+   * @n       eVEML6075PowerOff   power off
+   */
+  void setPower(eVEML6075Power_t ePower);
 
-// power status define
-typedef enum {
-  eVEML6075PowerOn,
-  eVEML6075PowerOff
-} eVEML6075Power_t;
+  /**
+   * @fn setActiveForceMode
+   * @brief set active force mode
+   * @param eMode
+   * @n       eVEML6075ActiveForceModeDisable    VEML6075 active force mode disable
+   * @n       eVEML6075ActiveForceModeEnable     VEML6075 active force mode enable
+   */
+  void setActiveForceMode(eVEML6075ActiveForceMode_t eMode);
 
-/**
- * @brief Set power on or off.
- *
- * @param ePower The status you want to set.
- */
-void setPower(eVEML6075Power_t ePower);
+  /**
+   * @fn trigOneMeasurement
+   * @brief Trigger a measurement
+   */
+  void trigOneMeasurement();
 
-/**
- * @brief Get power status.
- *
- * @return Status of power.
- */
-eVEML6075Power_t getPower();
+  /**
+   * @fn setDynamic
+   * @brief set Dynamic
+   * @param eDynamic
+   * @n       eVEML6075DynamicNormal    normal dynamic setting
+   * @n       eVEML6075DynamicHigh      high dynamic setting
+   */
+  void setDynamic(eVEML6075Dynamic_t eDynamic);
 
-// Active force mode define
-typedef enum {
-  eVEML6075ActiveForceModeDisable,
-  eVEML6075ActiveForceModeEnable,
-} eVEML6075ActiveForceMode_t;
+  /**
+   * @fn setIntegrationTime
+   * @brief set integration time
+   * @param eUV_IT
+   * @n       eVEML6075UV_IT_50    50ms
+   * @n       eVEML6075UV_IT_100   100ms
+   * @n       eVEML6075UV_IT_200   200ms
+   * @n       eVEML6075UV_IT_400   400ms
+   * @n       eVEML6075UV_IT_800   800ms
+   */
+  void setIntegrationTime(eVEML6075UV_IT_t eUV_IT);
 
-/**
- * @brief Set active force mode enable or disable.
- *
- * @param eMode The status you want to set.
- */
-void setActiveForceMode(eVEML6075ActiveForceMode_t eMode);
+  /**
+   * @fn getPower
+   * @brief getPower
+   * @return  Power status
+   * @retval    eVEML6075PowerOn    power on
+   * @retval    eVEML6075PowerOff   power off
+   */
+  eVEML6075Power_t getPower();
 
-/**
- * @brief Get active force mode status.
- *
- * @return Status of active force mode.
- */
-eVEML6075ActiveForceMode_t getActiveForceMode();
+  /**
+   * @fn getActiveForceMode
+   * @brief get active force mode
+   * @return  Mode
+   * @retval    eVEML6075ActiveForceModeDisable    VEML6075 active force mode disable
+   * @retval    eVEML6075ActiveForceModeEnable     VEML6075 active force mode enable
+   */
+  eVEML6075ActiveForceMode_t getActiveForceMode();
 
-/**
- * @brief Trigger one measurement if active force mode is enable.
- */
-void trigOneMeasurement();
+  /**
+   * @fn getDynamic
+   * @brief get Dynamic
+   * @return  Mode
+   * @retval    eVEML6075DynamicNormal    normal dynamic setting
+   * @retval    eVEML6075DynamicHigh      high dynamic setting
+   */
+  eVEML6075Dynamic_t getDynamic();
 
-// Dynamic status define
-typedef enum {
-  eVEML6075DynamicNormal,
-  eVEML6075DynamicHigh
-} eVEML6075Dynamic_t;
+  /**
+   * @fn getIntegrationTime
+   * @brief get integration time
+   * @return  integration time
+   * @retval    eVEML6075UV_IT_50    50ms
+   * @retval    eVEML6075UV_IT_100   100ms
+   * @retval    eVEML6075UV_IT_200   200ms
+   * @retval    eVEML6075UV_IT_400   400ms
+   * @retval    eVEML6075UV_IT_800   800ms
+   */
+  eVEML6075UV_IT_t getIntegrationTime();
 
-/**
- * @brief Set dynamic status.
- *
- * @param eDynamic The status you want to set.
- */
-void setDynamic(eVEML6075Dynamic_t eDynamic);
 
-/**
- * @brief Get dynamic status.
- *
- * @return Status of dynamic.
- */
-eVEML6075Dynamic_t getDynamic();
+  /**
+   * @fn readUvaRaw
+   * @brief The reading sensor collects raw data in the UVA band
+   * @return  UVA Raw
+   */
+  uint16_t readUvaRaw();
 
-// Integration time define
-typedef enum {
-  eVEML6075UV_IT_50,
-  eVEML6075UV_IT_100,
-  eVEML6075UV_IT_200,
-  eVEML6075UV_IT_400,
-  eVEML6075UV_IT_800
-} eVEML6075UV_IT_t;
+  /**
+   * @fn readUvbRaw
+   * @brief The reading sensor collects raw data in the UVB band
+   * @return  UVB Raw
+   */
+  uint16_t readUvbRaw();
 
-/**
- * @brief Set integration time status.
- *
- * @param eUV_IT The status you want to set.
- */
-void setIntegrationTime(eVEML6075UV_IT_t eUV_IT);
+  /**
+   * @fn readUvComp1Raw
+   * @brief The reading sensor collects raw data in the UvComp1
+   * @return  UvComp1 Raw
+   */
+  uint16_t readUvComp1Raw();
 
-/**
- * @brief Get dynamic status.
- *
- * @return Status of integration time.
- */
-eVEML6075UV_IT_t getIntegrationTime();
+  /**
+   * @fn readUvComp2Raw
+   * @brief The reading sensor collects raw data in the UvComp2
+   * @return  UvComp2 Raw
+   */
+  uint16_t readUvComp2Raw();
 
-/**
- * @brief Get UVA raw data.
- *
- * @return Raw data of UVA.
- */
-uint16_t readUvaRaw();
+  /**
+   * @fn getUva
+   * @brief The UVA band data of ultraviolet ray are calculated according to the data collected
+   * @return  UVA data
+   */
+  float getUva();
 
-/**
- * @brief Get UVB raw data.
- *
- * @return Raw data of UVB.
- */
-uint16_t readUvbRaw();
+  /**
+   * @fn getUvb
+   * @brief The UVB band data of ultraviolet ray are calculated according to the data collected
+   * @return  UVB data
+   */
+  float getUvb();
 
-/**
- * @brief Get UV compare1 raw data.
- *
- * @return Raw data of UV compare1.
- */
-uint16_t readUvComp1Raw();
-
-/**
- * @brief Get UV compare2 raw data.
- *
- * @return Raw data of UV compare2.
- */
-uint16_t readUvComp2Raw();
-
-/**
- * @brief Get UVA.
- *
- * @return UVA.
- */
-float getUva();
-
-/**
- * @brief Get UVB.
- *
- * @return UVB.
- */
-float getUvb();
-
-/**
- * @brief Get UV index.
- *
- * @return UV index.
- */
-float getUvi(float Uva, float Uvb);
-
-```
-
-Python methods is similar to cpp
-
-```py
-
-class DFRobot_VEML6075:
-
-  def __init__(self, i2cBus, addr):
-
-  def begin(self):
-
-  POWER_ON = 0x00
-  POWER_OFF = 0x01
-
-  def setPower(self, power):
-
-  def getPower(self):
-
-  ACTIVE_FORCE_ENABLE = 0x02
-  ACTIVE_FORCE_DISABLE = 0x00
-
-  def setActiveForceMode(self, isEnable):
-
-  def getActiveForceMode(self):
-
-  def trigOneMeasurement(self):
-
-  DYNAMIC_NORMAL = 0x00
-  DYNAMIC_HIGH = 0x08
-
-  def setDynamic(self, dynamic):
-
-  def getDynamic(self):
-
-  UV_IT_50 = 0x00
-  UV_IT_100 = 0x10
-  UV_IT_200 = 0x20
-  UV_IT_400 = 0x30
-  UV_IT_800 = 0x40
-
-  def setIntegrationTime(self, t):
-
-  def getIntegrationTime(self):
-
-  def readUvaRaw(self):
-
-  def readUvbRaw(self):
-
-  def readUvComp1Raw(self):
-  
-  def readUvComp2Raw(self):
-
-  def getUva(self):
-
-  def getUvb(self):
-
-  def getUvi(self, Uva, Uvb):
-
-  def Uvi2mwpcm2(self, Uvi):
-
+  /**
+   * @fn getUvb
+   * @brief The UVI band data of ultraviolet ray are calculated according to the data collected
+   * @return  UVI data
+   */
+  float getUvi(float Uva, float Uvb);
 ```
 
 ## Compatibility
 
-MCU                | Work Well | Not Work Well | Untested  | Remarks
------------------- | :----------: | :----------: | :---------: | -----
-FireBeetle-ESP32  |      √       |             |            | 
-FireBeetle-ESP8266  |      √       |             |            | 
-FireBeetle-328P |      √       |             |            | 
+| Board         | Work Well | Work Wrong | Untested | Remarks |
+| ------------- | :-------: | :--------: | :------: | ------- |
+| Arduino uno   |     √     |            |          |         |
+| Mega2560      |     √     |            |          |         |
+| Leonardo      |     √     |            |          |         |
+| ESP32         |     √     |            |          |         |
+| micro:bit     |           |      √     |          |         |
+| FireBeetle M0 |     √     |            |          |         |
 
-RASPBERRY                | Work Well | Not Work Well | Untested  | Remarks
------------------- | :----------: | :----------: | :---------: | -----
-3b  |      √       |             |            | 
+## History
+
+- 2021/10/18 - Version 1.0.1 released.
+- 2018/12/18 - Version 1.0.0 released.
+
 
 ## Credits
 
-* author [xiaowo jiehan.guo@dfrobot.com]
+Written by Fary(feng.yang@dfrobot.com), 2021. (Welcome to our [website](https://www.dfrobot.com/))
+

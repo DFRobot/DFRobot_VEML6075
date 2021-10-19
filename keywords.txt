@@ -1,4 +1,16 @@
-DFRobot_VEML6075_IIC	KEYWORD2
+#######################################
+# Syntax Coloring Map For DFRobot_VEML6075
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_VEML6075	KEYWORD1
+DFRobot_VEML6075_IIC	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
 setPower	KEYWORD2
 setActiveForceMode	KEYWORD2
 trigOneMeasurement	KEYWORD2
@@ -20,6 +32,9 @@ getUva	KEYWORD2
 getUvb	KEYWORD2
 getUvi	KEYWORD2
 
+#######################################
+# Constants (LITERAL1)
+#######################################
 eVEML6075PowerOn	LITERAL1
 eVEML6075PowerOff	LITERAL1
 eVEML6075Power_t	LITERAL1
