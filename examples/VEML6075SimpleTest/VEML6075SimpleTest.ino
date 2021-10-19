@@ -4,6 +4,7 @@
  * @n       Print UVA index, UVB index and UV index on the serial monitor
  * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
+ * @author [xiaowo] (jiehan.guo@dfrobot.com)
  * @maintainer [Fary](feng.yang@dfrobot.com)
  * @version  V1.0
  * @date  2021-10-18

@@ -7,7 +7,7 @@ photodiode, amplifiers, and analog / digital circuits into a
 single chip using a CMOS process. When the UV sensor is
 applied, it is able to detect UVA and UVB intensity to provide
 a measure of the signal strength as well as allow for UVI
-measurement. </br>
+measurement. <br>
 
   The VEML6075 provides excellent temperature compensation
 capability for keeping the output stable under changing
